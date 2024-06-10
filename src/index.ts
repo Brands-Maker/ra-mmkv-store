@@ -1,7 +1,7 @@
 import { Store } from "react-admin";
 import { MMKV } from "react-native-mmkv";
 
-export const storage = new MMKV({ id: "react-admin" });
+export const defaultStore = new MMKV({ id: "react-admin" });
 
 type Subscription = {
   callback: (value: unknown) => void;
@@ -12,7 +12,8 @@ const RA_STORE = "RaStore";
 
 export const mmkvStore = (
   version: string = "1",
-  appKey: string = ""
+  appKey: string = "",
+  storage: MMKV = defaultStore
 ): Store => {
   const prefix = `${RA_STORE}.${appKey}`;
   const prefixLength = prefix.length;
