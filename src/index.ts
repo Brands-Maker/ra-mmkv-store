@@ -22,7 +22,7 @@ export const mmkvStore = (
 
   const publish = (key: string, value: unknown) => {
     for (const id of Object.keys(subscriptions)) {
-      if (subscriptions[id].key === key) {
+      if (subscriptions[id]?.key === key) {
         subscriptions[id].callback(value);
       }
     }
